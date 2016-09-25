@@ -3,12 +3,14 @@ import logo from '../logo.svg';
 import '../App.css';
 
 import Person from './Person';
+import Countdown from './Countdown';
 
 class App extends Component {
   render() {
     // all tags need to close! <br/>
     // no comments allowed in JSX
     return <div className="App">
+      <Countdown number={10} />
       <Person
         firstName="Amy"
         lastName="Hua"
