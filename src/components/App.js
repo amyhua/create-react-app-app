@@ -4,6 +4,7 @@ import '../App.css';
 
 import Person from './Person';
 import Countdown from './Countdown';
+import Decrement from './Decrement';
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
     // no comments allowed in JSX
     return <div className="App">
       <Countdown number={10} />
+      <Decrement number={5} color="yellow" />
       <Person
         firstName="Amy"
         lastName="Hua"
