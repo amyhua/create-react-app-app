@@ -31,7 +31,7 @@ class Countdown extends Component {
     render() {
       // data is fixed by the time it goes to render.
       // not able to change state or props here anymore!
-      return <div>{this.state.number}</div>
+      return <div>Countdown: {this.state.number}</div>
     }
 };
 

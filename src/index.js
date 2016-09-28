@@ -4,6 +4,6 @@ import App from './components/App';
 import './index.css';
 
 ReactDOM.render(
-  <App />, // this.props.data
+  <App number={prompt('Enter a number')} />,
   document.getElementById('root')
 );

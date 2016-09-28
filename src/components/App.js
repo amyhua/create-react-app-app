@@ -1,18 +1,42 @@
-import React, { Component } from 'react';
-import logo from '../logo.svg';
+import React, { Component, PropTypes } from 'react';
 import '../App.css';
 
 import Person from './Person';
 import Countdown from './Countdown';
 import Decrement from './Decrement';
 
+const Text = (props) => {
+  return <h2>{props.text}</h2>;
+  // ends up being the returned elment in render
+};
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      number: props.number
+    };
+    this.onDecrement = this.onDecrement.bind(this);
+  }
+
+  onDecrement(newNumber) {
+    console.log('decremented!', newNumber);
+    this.setState({
+      number: newNumber
+    });
+  }
+
   render() {
     // all tags need to close! <br/>
     // no comments allowed in JSX
+    const isLowEnough = this.state.number <= 10;
     return <div className="App">
-      <Countdown number={10} />
-      <Decrement number={5} color="yellow" />
+      <Text text="Some text here!!" />
+      <Decrement
+        onDecrement={this.onDecrement}
+        number={this.state.number}
+        color="yellow" />
+      { isLowEnough ? <Countdown number={10} /> : ''}
       <Person
         firstName="Amy"
         lastName="Hua"
@@ -30,5 +54,9 @@ class App extends Component {
     </div>
   }
 }
+
+App.propTypes = {
+  number: PropTypes.number.isRequired
+};
 
 export default App;

@@ -19,6 +19,7 @@ export default class Decrement extends Component {
     this.setState({
       number: newNumber
     });
+    this.props.onDecrement(newNumber);
   }
 
   highlight() {
@@ -56,4 +57,10 @@ export default class Decrement extends Component {
             </div>
             )
   }
+}
+
+Decrement.propTypes = {
+  onDecrement: PropTypes.func.isRequired,
+  number: PropTypes.number.isRequired,
+  color: PropTypes.string.isRequired
 }
