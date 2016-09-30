@@ -16,11 +16,10 @@ class App extends Component {
     this.state = {
       number: props.number
     };
-    this.onDecrement = this.onDecrement.bind(this);
+    this.setNumber = this.setNumber.bind(this);
   }
 
-  onDecrement(newNumber) {
-    console.log('decremented!', newNumber);
+  setNumber(newNumber) {
     this.setState({
       number: newNumber
     });
@@ -33,7 +32,7 @@ class App extends Component {
     return <div className="App">
       <Text text="Some text here!!" />
       <Decrement
-        onDecrement={this.onDecrement}
+        setNumber={this.setNumber}
         number={this.state.number}
         color="yellow" />
       { isLowEnough ? <Countdown number={10} /> : ''}

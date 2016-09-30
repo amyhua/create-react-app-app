@@ -6,7 +6,6 @@ export default class Decrement extends Component {
     // this is the only place where you can use this.state = ...
     // otherwise, use this.setState
     this.state = {
-      number: props.number,
       color: props.color
     };
     this.decrement = this.decrement.bind(this);    
@@ -15,19 +14,19 @@ export default class Decrement extends Component {
   }
 
   decrement() {
-    const newNumber = this.state.number - 1;
+    const newNumber = this.props.number - 1;
     this.setState({
       number: newNumber
     });
-    this.props.onDecrement(newNumber);
+    this.props.setNumber(newNumber);
   }
 
   highlight() {
     const newColor = 'red';
-    const newNumber = this.state.number - 1;
+    const newNumber = this.props.number - 1;
+    this.props.setNumber(newNumber);
     this.setState({
-      color: newColor,
-      number: newNumber
+      color: newColor
     });
   }
 
@@ -39,14 +38,14 @@ export default class Decrement extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if (nextState.number < 0) {
+    if (nextProps.number < 0) {
       return false;
     }
     return true;
   }
 
   render() {
-    const header = () => <h1>{this.state.number}</h1>
+    const header = () => <h1>{this.props.number}</h1>
     return (
             <div>
               <div
@@ -60,7 +59,7 @@ export default class Decrement extends Component {
 }
 
 Decrement.propTypes = {
-  onDecrement: PropTypes.func.isRequired,
+  setNumber: PropTypes.func.isRequired,
   number: PropTypes.number.isRequired,
   color: PropTypes.string.isRequired
 }
